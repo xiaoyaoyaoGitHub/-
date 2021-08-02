@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素垂直居中</title>
+</head>
+<style>
+    body, html {
+        height: 100%;
+    }
+    div {
+        border: 1px solid #000;
+    }
+    .inner {
+        width: 200px;
+        height: 200px;
+    }
+    .wrapper {
+        height: 100%;
+        position: relative;
+        /* display: grid;
+        justify-content: center;
+        align-content: center; */
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .inner {
+        flex: 0 1 200px;
+    }
+    /* 不需要知道元素具体高度 */
+
+    /* .inner {
+        margin: 0 auto;
+        position: relative;
+        top: 50%;
+        width: 200px;
+        height: 200px;
+        transform: translateY(-50%);
+    } */
+
+    /* .inner {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    } */
+
+
+    /* 需要知道具体高度 */
+    /* .inner {
+        margin: 0 auto;
+        position: relative;
+        top: 50%;
+        width: 200px;
+        height: 200px;
+        margin-top: -100px;
+    } */
+
+</style>
+<body>
+    <div class="wrapper">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>
