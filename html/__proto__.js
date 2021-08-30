@@ -6,6 +6,7 @@ function Person(){
     this.name = '234'
 }
 const lily = new Person()
+console.log(lily.prototype);
 console.log(lily.__proto__); // {constructor: ƒ}constructor: ƒ Person()[[Prototype]]: Object
 console.log(lily.__proto__.constructor); //ƒ Person(){ this.name = '234'}
 console.log(lily.__proto__.constructor.__proto__); //function 

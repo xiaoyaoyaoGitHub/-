@@ -734,3 +734,19 @@
         }
     }
     ```
+
+28. es5实现const , let
+    ```js
+        const _const = (key, value) => {
+            Object.definePrototype(window, key, {
+                enumerable: false,
+                configurable: false,
+                get(){
+                    return value
+                },
+                set(){
+                    throw TypeError('只读变量,不可更改')
+                }
+            })
+        }
+    ```

@@ -13,7 +13,7 @@
             - 首先会优先在该对象上搜寻。如果找不到，还会依次层层向上搜索该对象的原型对象、该对象的原型对象的原型对象等（套娃告警）;
             - JavaScript 中的所有对象都来自Object，Object.prototype.__proto__ === null。null没有原型，并作为这个原型链中的最后一个环节；
             - JavaScript 会遍历访问对象的整个原型链，如果最终依然找不到，此时会认为该对象的属性值为undefined。
-
+    6. 函数的prototype指向自身,类的prototype指向自身的构造函数
 
 ### javascript引擎如何执行javascript代码
     1. 语法分析阶段 (语法报错阶段在此阶段抛出)
