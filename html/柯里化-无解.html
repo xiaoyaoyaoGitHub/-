@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柯里化</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function add() {
+        var args = Array.prototype.slice.call(arguments);
+
+        var fn = function () {
+            var sub_arg = Array.prototype.slice.call(arguments);
+            // 把全部的参数聚集到参数的入口为一个参数： args.concat(sub_arg)
+            return add.apply(null, args.concat(sub_arg));
+        }
+
+        fn.toString = function () {
+            return args.reduce(function (a, b) {
+                return a + b;
+            })
+        }
+
+        return fn;
+    }
+    console.log(add(1, 2)) // 3
+    console.log(add(1)(2)) // 3
+    console.log(add(1)(2)(3)) // 6
+    console.log(add(1, 2, 3)(4)) // 10
+    // 创建函数
+    // function curry(fn) {
+    //     const args = Array.prototype.slice.call(arguments, 1)
+    //     return function () {
+    //         args.push([...arguments]);
+    //         return fn.apply(this, args)
+    //     }
+    // }
+
+    // // function add() {
+
+    // // }
+
+    // const add = curry(function(){
+    //     const args = [...arguments];
+    //     return args.reduce((acc, curr) => acc + curr, 0)
+    // })
+
+    // console.log(add(1));
+
+    // add(1)(2)(3)(4)=10;
+    // function add(){
+    //     let args  = [...arguments];
+    //     const inner = function(){
+    //         args.push(arguments);
+    //         return inner
+    //     }
+    //     inner.toString = function(){
+    //         return args.reduce((acc, curr) => acc + curr,0)
+    //     }
+    //     return inner
+    // }
+    // console.log(add(1)(2)(3)(4));
+    // function add() {
+    //     // 将传入的不定参数转为数组对象
+    //     let args = Array.prototype.slice.call(arguments);
+
+    //     // 递归：内部函数里面进行自己调用自己
+    //     // 当 add 函数不断调用时，把第 N+1 个括号的参数加入到第 N 个括号的参数里面
+    //     let inner = function () {
+    //         args.push(...arguments);
+    //         return inner;
+    //     }
+
+    //     inner.toString = function () {
+    //         // args 里的值不断累加
+    //         return args.reduce(function (prev, cur) {
+    //             return prev + cur;
+    //         },0);
+    //     };
+
+    //     return inner;
+    // }
+
+    // // 测试一下
+    // let result = add(1)(2)(3)(4);
+    // console.log(result);
+</script>
+
+</html>
