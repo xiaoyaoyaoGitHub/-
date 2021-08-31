@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apply</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    Function.prototype._apply = function (context, args) {
+        context.fn = this;
+        const res = context.fn(...args)
+        delete context.fn
+        return res
+    }
+
+    function test(a, b) {
+        console.log(a, b);
+    }
+
+    test._apply({}, [2, 4])
+</script>
+
+</html>
