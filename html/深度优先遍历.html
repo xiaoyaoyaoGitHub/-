@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深度优先遍历和广度优先遍历</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li>
+                <a href="">
+                    <img src="" alt="">
+                </a>
+            </li>
+            <li>
+                <span></span>
+            </li>
+            <li></li>
+        </ul>
+        <dl>
+            <ol></ol>
+            <ol></ol>
+            <ol></ol>
+        </dl>
+    </div>
+</body>
+<script>
+    const nodes = document.getElementById('app');
+    const gather = []
+    // 深度优先遍历
+    function deepSearch(node, list) {
+        const childrenList = node.children;
+        list.push(node)
+        if (childrenList) {
+            for (let i = 0; i < childrenList.length; i++) {
+                deepSearch(childrenList[i], list)
+            }
+        }
+    }
+    // deepSearch(nodes, gather)
+    // 广度优先遍历  Maximum call stack size exceeded
+    // function rangeSearch(nodes, gather) {
+    //     let i = 0;
+    //     while (nodes != null) {
+    //         gather.push(nodes);
+    //         rangeSearch(nodes.nextElementSibling,gather)
+    //         nodes = gather[i++];
+    //         rangeSearch(nodes.firstElementChild,gather);
+    //     }
+    // }
+    // rangeSearch(nodes, gather)
+    function breadthFirstSearch(node) {
+        var nodes = [];
+        if (node != null) {
+            var queue = [];
+            queue.unshift(node);
+            while (queue.length != 0) {
+                var item = queue.shift();
+                nodes.push(item);
+                var children = item.children;
+                for (var i = 0; i < children.length; i++)
+                    queue.push(children[i]);
+            }
+        }
+        return nodes;
+    }
+    console.log(breadthFirstSearch(nodes));
+</script>
+
+</html>
